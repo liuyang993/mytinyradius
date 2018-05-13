@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Built-By: liuyang
+Class-Path: . lib/commons-logging-1.1.1.jar lib/log4j-1.2.17.jar
+Build-Jdk: 1.8.0_171
+Created-By: Maven Integration for Eclipse
+Main-Class: org.tinyradius.test.TestClient
+
