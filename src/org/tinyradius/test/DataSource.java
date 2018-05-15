@@ -18,6 +18,9 @@ public class DataSource {
 
         ds.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         
+        ds.setInitialSize(10);
+        ds.setMaxTotal(10);
+        
         //ds.setUsername("sa");
         //ds.setPassword("Passw0rdPassw0rd123");
         //ds.setUrl("jdbc:sqlserver://hk.worldhubcom.cn:1026");

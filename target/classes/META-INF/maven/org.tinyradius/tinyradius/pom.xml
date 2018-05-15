@@ -68,7 +68,7 @@
 	            <manifest>
 	            	<addClasspath>true</addClasspath>
 		            <classpathPrefix>lib/</classpathPrefix>
-	                <mainClass>org.tinyradius.test.TestServer</mainClass>
+	                <mainClass>org.tinyradius.test.TestClient</mainClass>
 	            </manifest>
 	            <manifestEntries>
 					<Class-Path>.</Class-Path>

@@ -45,11 +45,24 @@ public class TestClient {
 				// 1. Send Access-Request
 				AccessRequest ar = new AccessRequest(user, pass);
 				ar.setAuthProtocol(AccessRequest.AUTH_PAP); // or AUTH_CHAP
-				ar.addAttribute("NAS-Identifier", "this.is.my.nas-identifier.de");
-				ar.addAttribute("NAS-IP-Address", "192.168.0.100");
-				ar.addAttribute("Service-Type", "Login-User");
-				ar.addAttribute("WISPr-Redirection-URL", "http://www.sourceforge.net/");
-				ar.addAttribute("WISPr-Location-ID", "net.sourceforge.ap1");
+				
+				
+				
+//				ar.addAttribute("NAS-Identifier", "this.is.my.nas-identifier.de");
+//				ar.addAttribute("NAS-IP-Address", "192.168.0.100");
+//				ar.addAttribute("Service-Type", "Login-User");
+//				ar.addAttribute("WISPr-Redirection-URL", "http://www.sourceforge.net/");
+//				ar.addAttribute("WISPr-Location-ID", "net.sourceforge.ap1");
+				
+				
+				ar.addAttribute("Calling-Station-Id", "12345678");
+				ar.addAttribute("Called-Station-Id", "87654321");				
+				ar.addAttribute("h323-conf-id", "asdfasf");
+				ar.addAttribute("NAS-IP-Address", "192.168.1.18");
+				
+				
+				
+				
 				
 				System.out.println("Packet before it is sent\n" + ar + "\n");
 				RadiusPacket response = rc.authenticate(ar);
@@ -69,6 +82,6 @@ public class TestClient {
 				
 				rc.close();
 		}
-	}
+	}           //for
 	
 }

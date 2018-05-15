@@ -336,7 +336,7 @@ public class RadiusClient {
 	private String sharedSecret = null;
 	private DatagramSocket socket = null;
 	private int retryCount = 3;
-	private int socketTimeout = 3000;
+	private int socketTimeout = 10000;
 	private static Log logger = LogFactory.getLog(RadiusClient.class);
 
 }

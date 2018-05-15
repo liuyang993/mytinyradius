@@ -34,16 +34,16 @@ public class TestServer {
 //					return null;
 				
 				
-//				if (getauthen("userLY").equals("success"))  {
-//					//System.out.println("should allow authen \n");
-//					return "testing123";
-//				}
-//				else   {
-//					return null;
-//				}
+				if (getauthen("userLY").equals("success"))  {
+					//System.out.println("should allow authen \n");
+					return "testing123";
+				}
+				else   {
+					return null;
+				}
 				
 				
-				return "testing123";    //this mean allow any client IP    .LY
+				//return "testing123";    //this mean allow any client IP    .LY
 				
 			}
 			
@@ -159,7 +159,7 @@ public class TestServer {
 		
 		System.out.println("Server started.");
 		
-		Thread.sleep(1000*60*30);
+		Thread.sleep(1000*60*60);
 		System.out.println("Stop server");
 		server.stop();
 	}
