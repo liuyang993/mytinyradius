@@ -1,7 +1,8 @@
 Manifest-Version: 1.0
 Built-By: liuyang
-Class-Path: . lib/commons-logging-1.1.1.jar lib/log4j-1.2.17.jar
+Class-Path: . lib/commons-logging-1.1.1.jar lib/log4j-1.2.17.jar lib/s
+ qljdbc4-4.0.jar lib/commons-dbcp2-2.1.jar lib/commons-pool2-2.3.jar
 Build-Jdk: 1.8.0_171
 Created-By: Maven Integration for Eclipse
-Main-Class: org.tinyradius.test.TestClient
+Main-Class: org.tinyradius.test.TestServer
 

@@ -14,6 +14,8 @@ import org.tinyradius.packet.RadiusPacket;
 import org.tinyradius.util.RadiusException;
 import org.tinyradius.util.RadiusServer;
 
+import java.sql.*;
+
 /**
  * Test server which terminates after 30 s.
  * Knows only the client "localhost" with secret "testing123" and
@@ -26,10 +28,23 @@ public class TestServer {
 		RadiusServer server = new RadiusServer() {
 			// Authorize localhost/testing123
 			public String getSharedSecret(InetSocketAddress client) {
-				if (client.getAddress().getHostAddress().equals("127.0.0.1"))
-					return "testing123";
-				else
-					return null;
+//				if (client.getAddress().getHostAddress().equals("127.0.0.1"))
+//					return "testing123";
+//				else
+//					return null;
+				
+				
+//				if (getauthen("userLY").equals("success"))  {
+//					//System.out.println("should allow authen \n");
+//					return "testing123";
+//				}
+//				else   {
+//					return null;
+//				}
+				
+				
+				return "testing123";    //this mean allow any client IP    .LY
+				
 			}
 			
 			// Authenticate mw
@@ -38,6 +53,7 @@ public class TestServer {
 					return "test";
 				else
 					return null;
+				
 			}
 			
 			// Adds an attribute to the Access-Accept packet
@@ -53,6 +69,86 @@ public class TestServer {
 					System.out.println("Answer:\n" + packet);
 				return packet;
 			}
+			
+			
+			//
+			public String getauthen(String username) {
+				 
+			    CallableStatement cstmt = null;
+
+				// Create a variable for the connection string.
+				//String connectionUrl = "jdbc:sqlserver://hk.worldhubcom.cn:1026;" +
+					//"databaseName=Pack2018;user=sa;password=Passw0rdPassw0rd123";
+
+				// Declare the JDBC objects.
+				Connection con = null;
+				
+				String sStatus =null;
+				
+				
+			    //List&lt;String&gt; employeeFullName = new ArrayList&lt;&gt;();
+			 
+			    try {
+			    	
+			    	con = DataSource.getInstance().getConnection();
+			           
+//			    	
+//			         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");  
+//			         con = DriverManager.getConnection(connectionUrl);  
+			    	
+			         
+			         System.out.println("connection success \n");
+			         
+			        cstmt = con.prepareCall(
+			                "{call sp_simple_sp_ly(?,?)}",
+			                ResultSet.TYPE_SCROLL_INSENSITIVE,
+			                ResultSet.CONCUR_READ_ONLY);
+			 
+			        cstmt.setString("I_username", username);
+			        cstmt.registerOutParameter("O_sMsg", java.sql.Types.VARCHAR);
+			        
+			        
+			        cstmt.execute();
+			        
+			        System.out.println("exec success \n");
+			        
+			        sStatus = cstmt.getNString("O_sMsg");
+			        
+			    	System.out.println("sStatus:\n" + sStatus);
+			        
+			 
+			    } catch (Exception ex) {
+			    	System.out.println("exec sp raise error \n");
+			    } finally {
+			        if (cstmt != null) {
+			            try {
+			                cstmt.close();
+			                con.close();
+			            } catch (SQLException ex) {
+			              
+			            }
+			        }
+			    	
+			    	
+			    }
+			    return sStatus;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			//
+			
+			
+			
+			
+			
+			
+			
 		};
 		if (args.length >= 1)
 			server.setAuthPort(Integer.parseInt(args[0]));

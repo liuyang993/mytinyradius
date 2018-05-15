@@ -246,6 +246,7 @@ public class RadiusClient {
 		for (int i = 1; i <= getRetryCount(); i++) {
 			try {
 				socket.send(packetOut);
+				//socket.setSoTimeout(5000);                  // 2018-5-14  LY add
 				socket.receive(packetIn);
 				return makeRadiusPacket(packetIn, request);
 			} catch (IOException ioex) {

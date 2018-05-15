@@ -247,3 +247,22 @@ VENDORATTR      14122   WISPr-Session-Terminate-Time  9       string
 VENDORATTR      14122   WISPr-Session-Terminate-End-Of-Day    10      integer
 VENDORATTR      14122   WISPr-Billing-Class-Of-Service        11      string
 
+
+
+VENDOR			9	Cisco
+VENDORATTR      9   Cisco-NAS-Port             2       string
+VENDORATTR      9   h323-conf-id             24       string
+VENDORATTR      9   h323-setup-time             25       string
+VENDORATTR      9   h323-call-origin             26       string
+VENDORATTR      9   h323-call-type             27       string
+VENDORATTR      9   h323-connect-time             28       string
+VENDORATTR      9   h323-disconnect-time             29       string
+VENDORATTR      9   h323-disconnect-cause             30       string
+VENDORATTR      9   h323-incoming-conf-id             35       string
+VENDORATTR      9   release-source             115       string
+VENDORATTR      9   call-id             141       string
+
+
+
+
+
